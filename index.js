@@ -15,18 +15,19 @@ const createDate = (dates, posisi) => {
     return `${minutes}${seconds}`;
   }
 
-  if(posisi === undefined){
-    let time = [];
+  const noPosisi = () =>{
+    let time = dates.sort();
     for(let i = 0; i< dates.length; i++){
-      time.push(miliToSecond(Date.parse(dates[i])));
+      time[i] = miliToSecond(Date.parse(dates[i]));
     }
-    time.sort();
     return time.join("-");
+  }
 
+  if(posisi === undefined){
+    let result = noPosisi();
+    return result;
   }else{
-    let mili = Date.parse(dates[posisi]);
-    let timeSeconds = miliToSecond(mili);
-    return timeSeconds;
+    return dates[posisi];
   }
 };
 
