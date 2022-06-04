@@ -8,7 +8,27 @@ const dates = [
 ];
 
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = (dates, posisi) => {
+  const miliToSecond = (miliseconds) => {
+    let minutes = Math.floor(miliseconds / 60000);
+    let seconds = ((miliseconds % 60000) / 1000).toFixed(0);
+    return `${minutes}${seconds}`;
+  }
+
+  if(posisi === undefined){
+    let time = [];
+    for(let i = 0; i< dates.length; i++){
+      time.push(miliToSecond(Date.parse(dates[i])));
+    }
+    time.sort();
+    return time.join("-");
+
+  }else{
+    let mili = Date.parse(dates[posisi]);
+    let timeSeconds = miliToSecond(mili);
+    return timeSeconds;
+  }
+};
 
 // ! JANGAN DIMODIFIKASI
 (() => {
