@@ -10,15 +10,15 @@ const dates = [
 // TODO: Buatlah fungsi createDate
 const createDate = (dates, posisi) => {
   const miliToSecond = (miliseconds) => {
-    let minutes = Math.floor(miliseconds / 60000);
-    let seconds = ((miliseconds % 60000) / 1000).toFixed(0);
-    return `${minutes}${seconds}`;
+    let seconds = Math.floor(miliseconds / 1000);
+    return `${seconds}`;
   }
 
   const noPosisi = () =>{
     let time = dates.sort();
     for(let i = 0; i< dates.length; i++){
       time[i] = miliToSecond(Date.parse(dates[i]));
+      console.log(time[i]);
     }
     return time.join("-");
   }
