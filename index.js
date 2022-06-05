@@ -15,19 +15,24 @@ const createDate = (dates, posisi) => {
   }
 
   const noPosisi = () =>{
-    let time = dates.sort();
+    // let time = dates.sort();
+    let time = [];
     for(let i = 0; i< dates.length; i++){
       time[i] = miliToSecond(Date.parse(dates[i]));
-      console.log(time[i]);
+      
     }
-    return time.join("-");
+    //console.log(time);
+    return time;
   }
 
   if(posisi === undefined){
-    let result = noPosisi();
-    return result;
+    let hasil = noPosisi();
+    let result = hasil.sort();
+    return result.join("-");
+
   }else{
-    return dates[posisi];
+    let result = noPosisi();
+    return result[posisi];
   }
 };
 
